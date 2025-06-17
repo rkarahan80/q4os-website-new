@@ -1,4 +1,4 @@
-// Enhanced Features for Q4OS Website
+// Enhanced Features for Q4OS Website with Bootstrap 5.3.6
 class Q4OSEnhancer {
     constructor() {
         this.init();
@@ -10,20 +10,27 @@ class Q4OSEnhancer {
         this.setupFormValidation();
         this.setupNotifications();
         this.setupProgressBars();
-        this.setupLazyLoading();
         this.setupSearchFunctionality();
         this.setupThemeToggle();
         this.setupDownloadTracker();
         this.setupNewsletterSignup();
+        this.setupDonationSystem();
+        this.setupNavbarScroll();
+        this.setupCopyToClipboard();
+        this.setupLazyLoading();
+        this.setupAnimations();
     }
 
     // Scroll to Top Button
     setupScrollToTop() {
-        const scrollBtn = document.createElement('button');
-        scrollBtn.className = 'scroll-to-top';
-        scrollBtn.innerHTML = '↑';
-        scrollBtn.setAttribute('aria-label', 'Scroll to top');
-        document.body.appendChild(scrollBtn);
+        let scrollBtn = document.querySelector('.scroll-to-top');
+        if (!scrollBtn) {
+            scrollBtn = document.createElement('button');
+            scrollBtn.className = 'scroll-to-top';
+            scrollBtn.innerHTML = '<i class="bi bi-arrow-up"></i>';
+            scrollBtn.setAttribute('aria-label', 'Scroll to top');
+            document.body.appendChild(scrollBtn);
+        }
 
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
@@ -57,7 +64,21 @@ class Q4OSEnhancer {
         });
     }
 
-    // Form Validation Enhancement
+    // Navbar Scroll Effect
+    setupNavbarScroll() {
+        const navbar = document.getElementById('navbar');
+        if (!navbar) return;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    }
+
+    // Enhanced Form Validation
     setupFormValidation() {
         const forms = document.querySelectorAll('form');
         forms.forEach(form => {
@@ -69,10 +90,16 @@ class Q4OSEnhancer {
             });
 
             // Real-time validation
-            const inputs = form.querySelectorAll('input, textarea');
+            const inputs = form.querySelectorAll('input, textarea, select');
             inputs.forEach(input => {
                 input.addEventListener('blur', () => {
                     this.validateField(input);
+                });
+
+                input.addEventListener('input', () => {
+                    if (input.classList.contains('is-invalid')) {
+                        this.validateField(input);
+                    }
                 });
             });
         });
@@ -95,8 +122,8 @@ class Q4OSEnhancer {
         const value = field.value.trim();
         let isValid = true;
 
-        // Remove previous error styling
-        field.classList.remove('is-invalid');
+        // Remove previous validation classes
+        field.classList.remove('is-invalid', 'is-valid');
 
         if (field.hasAttribute('required') && !value) {
             isValid = false;
@@ -105,105 +132,411 @@ class Q4OSEnhancer {
             if (!emailRegex.test(value)) {
                 isValid = false;
             }
+        } else if (field.type === 'number' && value) {
+            const numValue = parseFloat(value);
+            const min = parseFloat(field.getAttribute('min'));
+            const max = parseFloat(field.getAttribute('max'));
+            
+            if (isNaN(numValue) || (min && numValue < min) || (max && numValue > max)) {
+                isValid = false;
+            }
         }
 
-        if (!isValid) {
+        if (isValid && value) {
+            field.classList.add('is-valid');
+        } else if (!isValid) {
             field.classList.add('is-invalid');
         }
 
         return isValid;
     }
 
-    // Notification System
+    // Enhanced Notification System
     setupNotifications() {
-        const container = document.createElement('div');
-        container.className = 'toast-container';
-        document.body.appendChild(container);
+        let container = document.querySelector('.toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.className = 'toast-container position-fixed top-0 end-0 p-3';
+            document.body.appendChild(container);
+        }
         this.toastContainer = container;
     }
 
     showNotification(message, type = 'info', duration = 5000) {
+        const toastId = 'toast-' + Date.now();
         const toast = document.createElement('div');
-        toast.className = `toast toast-${type} show`;
+        toast.className = `toast toast-${type}`;
+        toast.id = toastId;
+        toast.setAttribute('role', 'alert');
+        toast.setAttribute('aria-live', 'assertive');
+        toast.setAttribute('aria-atomic', 'true');
+        
+        const iconMap = {
+            success: 'check-circle-fill',
+            error: 'exclamation-triangle-fill',
+            warning: 'exclamation-triangle-fill',
+            info: 'info-circle-fill'
+        };
+
         toast.innerHTML = `
-            <div class="toast-body d-flex justify-content-between align-items-center">
-                <span>${message}</span>
-                <button type="button" class="btn-close" aria-label="Close"></button>
+            <div class="toast-header">
+                <i class="bi bi-${iconMap[type]} me-2"></i>
+                <strong class="me-auto">${type.charAt(0).toUpperCase() + type.slice(1)}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                ${message}
             </div>
         `;
 
         this.toastContainer.appendChild(toast);
 
-        // Close button functionality
-        const closeBtn = toast.querySelector('.btn-close');
-        closeBtn.addEventListener('click', () => {
-            this.removeToast(toast);
+        // Initialize Bootstrap toast
+        const bsToast = new bootstrap.Toast(toast, {
+            delay: duration
         });
+        
+        bsToast.show();
 
-        // Auto remove
-        setTimeout(() => {
-            this.removeToast(toast);
-        }, duration);
+        // Remove from DOM after hiding
+        toast.addEventListener('hidden.bs.toast', () => {
+            toast.remove();
+        });
     }
 
-    removeToast(toast) {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            if (toast.parentNode) {
-                toast.parentNode.removeChild(toast);
-            }
-        }, 300);
-    }
-
-    // Download Progress Bars
+    // Download Progress Tracking
     setupProgressBars() {
-        const downloadLinks = document.querySelectorAll('a[href*=".iso"], a[href*=".zip"], a[href*=".exe"]');
+        const downloadLinks = document.querySelectorAll('.download-btn');
         downloadLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                this.trackDownload(link.href, link.textContent);
+                const filename = link.getAttribute('data-file') || 'Q4OS';
+                this.trackDownload(link.href, filename, link);
             });
         });
     }
 
-    trackDownload(url, filename) {
+    trackDownload(url, filename, linkElement) {
         this.showNotification(`Starting download: ${filename}`, 'info');
         
-        // Simulate download tracking (in real implementation, this would track actual download)
-        const progressToast = document.createElement('div');
-        progressToast.className = 'toast toast-info show';
-        progressToast.innerHTML = `
-            <div class="toast-body">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span>Downloading ${filename}</span>
-                    <span class="download-percentage">0%</span>
-                </div>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 0%"></div>
-                </div>
-            </div>
-        `;
+        // Find progress container in the same card
+        const card = linkElement.closest('.card');
+        const progressContainer = card?.querySelector('.download-progress');
+        
+        if (progressContainer) {
+            progressContainer.style.display = 'block';
+            progressContainer.classList.add('show');
+            
+            const progressBar = progressContainer.querySelector('.progress-bar');
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        progressContainer.classList.remove('show');
+                        setTimeout(() => {
+                            progressContainer.style.display = 'none';
+                        }, 300);
+                        this.showNotification(`Download completed: ${filename}`, 'success');
+                    }, 1000);
+                }
 
-        this.toastContainer.appendChild(progressToast);
+                if (progressBar) {
+                    progressBar.style.width = `${progress}%`;
+                    progressBar.setAttribute('aria-valuenow', progress);
+                }
+            }, 200);
+        }
 
-        // Simulate progress
-        let progress = 0;
-        const interval = setInterval(() => {
-            progress += Math.random() * 15;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(interval);
-                setTimeout(() => {
-                    this.removeToast(progressToast);
-                    this.showNotification(`Download completed: ${filename}`, 'success');
-                }, 1000);
+        // Analytics tracking
+        this.trackEvent('download', {
+            file: filename,
+            url: url,
+            page: window.location.pathname
+        });
+    }
+
+    // Search Functionality
+    setupSearchFunctionality() {
+        const searchInput = document.querySelector('.search-input');
+        const searchResults = document.querySelector('.search-results');
+
+        if (!searchInput || !searchResults) return;
+
+        let searchTimeout;
+
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            const query = e.target.value.trim();
+            
+            if (query.length > 2) {
+                searchTimeout = setTimeout(() => {
+                    this.performSearch(query, searchResults);
+                }, 300);
+            } else {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+    }
+
+    performSearch(query, resultsContainer) {
+        const searchableElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, .card-title, .card-text');
+        const results = [];
+
+        searchableElements.forEach(element => {
+            const text = element.textContent.toLowerCase();
+            if (text.includes(query.toLowerCase())) {
+                results.push({
+                    text: element.textContent.substring(0, 100) + (element.textContent.length > 100 ? '...' : ''),
+                    element: element,
+                    type: element.tagName.toLowerCase()
+                });
+            }
+        });
+
+        this.displaySearchResults(results.slice(0, 5), resultsContainer);
+    }
+
+    displaySearchResults(results, container) {
+        if (results.length === 0) {
+            container.innerHTML = '<div class="p-3 text-muted">No results found</div>';
+        } else {
+            container.innerHTML = results.map(result => `
+                <div class="search-result-item" data-type="${result.type}">
+                    <div class="fw-medium">${result.text}</div>
+                    <small class="text-muted">${result.type.toUpperCase()}</small>
+                </div>
+            `).join('');
+
+            // Add click handlers
+            container.querySelectorAll('.search-result-item').forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    results[index].element.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    container.style.display = 'none';
+                    
+                    // Highlight the found element
+                    const element = results[index].element;
+                    element.style.background = 'rgba(25, 118, 210, 0.1)';
+                    setTimeout(() => {
+                        element.style.background = '';
+                    }, 2000);
+                });
+            });
+        }
+
+        container.style.display = 'block';
+    }
+
+    // Theme Toggle
+    setupThemeToggle() {
+        const themeToggle = document.querySelector('.theme-toggle');
+        if (!themeToggle) return;
+
+        themeToggle.addEventListener('click', () => {
+            this.toggleTheme();
+        });
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('q4os-theme');
+        if (savedTheme === 'dark') {
+            this.enableDarkMode();
+        }
+    }
+
+    toggleTheme() {
+        const body = document.body;
+        const isDark = body.classList.contains('dark-mode');
+
+        if (isDark) {
+            this.enableLightMode();
+        } else {
+            this.enableDarkMode();
+        }
+    }
+
+    enableDarkMode() {
+        document.body.classList.add('dark-mode');
+        const themeToggle = document.querySelector('.theme-toggle i');
+        if (themeToggle) {
+            themeToggle.className = 'bi bi-sun-fill';
+        }
+        localStorage.setItem('q4os-theme', 'dark');
+    }
+
+    enableLightMode() {
+        document.body.classList.remove('dark-mode');
+        const themeToggle = document.querySelector('.theme-toggle i');
+        if (themeToggle) {
+            themeToggle.className = 'bi bi-moon-fill';
+        }
+        localStorage.setItem('q4os-theme', 'light');
+    }
+
+    // Enhanced Donation System
+    setupDonationSystem() {
+        // Main donation form
+        this.setupDonationForm('donationForm', 'amount', 'donateBtn');
+        
+        // Modal donation form
+        this.setupDonationForm('modalDonationForm', 'modalAmount', 'modalDonateBtn');
+    }
+
+    setupDonationForm(formId, amountFieldId, buttonId) {
+        const form = document.getElementById(formId);
+        const amountField = document.getElementById(amountFieldId);
+        const donateBtn = document.getElementById(buttonId);
+        
+        if (!form || !amountField || !donateBtn) return;
+
+        const donationBtns = form.querySelectorAll('.donation-btn, .modal-donation-btn');
+        const customAmountInput = form.querySelector('input[type="number"]');
+
+        let selectedAmount = 0;
+
+        // Handle preset amount buttons
+        donationBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active class from all buttons
+                donationBtns.forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Set amount
+                selectedAmount = parseInt(btn.getAttribute('data-amount'));
+                amountField.value = selectedAmount;
+                
+                // Clear custom input
+                if (customAmountInput) {
+                    customAmountInput.value = '';
+                }
+                
+                // Enable donate button
+                donateBtn.disabled = false;
+                donateBtn.classList.remove('disabled');
+            });
+        });
+
+        // Handle custom amount input
+        if (customAmountInput) {
+            customAmountInput.addEventListener('input', (e) => {
+                const value = parseInt(e.target.value);
+                
+                // Remove active class from preset buttons
+                donationBtns.forEach(btn => btn.classList.remove('active'));
+                
+                if (value && value > 0) {
+                    selectedAmount = value;
+                    amountField.value = selectedAmount;
+                    donateBtn.disabled = false;
+                    donateBtn.classList.remove('disabled');
+                } else {
+                    selectedAmount = 0;
+                    amountField.value = '';
+                    donateBtn.disabled = true;
+                    donateBtn.classList.add('disabled');
+                }
+            });
+        }
+
+        // Handle form submission
+        form.addEventListener('submit', (e) => {
+            if (selectedAmount <= 0) {
+                e.preventDefault();
+                this.showNotification('Please select a donation amount.', 'warning');
+                return;
             }
 
-            const progressBar = progressToast.querySelector('.progress-bar');
-            const percentage = progressToast.querySelector('.download-percentage');
-            progressBar.style.width = `${progress}%`;
-            percentage.textContent = `${Math.round(progress)}%`;
-        }, 200);
+            // Show loading state
+            const originalText = donateBtn.innerHTML;
+            donateBtn.innerHTML = '<span class="loading"></span> Processing...';
+            donateBtn.disabled = true;
+
+            // Track donation attempt
+            this.trackEvent('donation_attempt', {
+                amount: selectedAmount,
+                page: window.location.pathname
+            });
+
+            // Re-enable after delay (in case of errors)
+            setTimeout(() => {
+                donateBtn.innerHTML = originalText;
+                donateBtn.disabled = false;
+            }, 5000);
+        });
+    }
+
+    // Newsletter Signup
+    setupNewsletterSignup() {
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (!newsletterForm) return;
+
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = e.target.querySelector('input[type="email"]');
+            const email = emailInput.value.trim();
+
+            if (this.validateEmail(email)) {
+                this.subscribeToNewsletter(email);
+                emailInput.value = '';
+            } else {
+                this.showNotification('Please enter a valid email address.', 'error');
+            }
+        });
+    }
+
+    validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    subscribeToNewsletter(email) {
+        this.showNotification('Thank you for subscribing to our newsletter!', 'success');
+        this.trackEvent('newsletter_signup', { email: email });
+    }
+
+    // Copy to Clipboard
+    setupCopyToClipboard() {
+        const copyButtons = document.querySelectorAll('.copy-hash');
+        
+        copyButtons.forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const hash = btn.getAttribute('data-hash');
+                
+                try {
+                    await navigator.clipboard.writeText(hash);
+                    
+                    // Visual feedback
+                    const originalText = btn.textContent;
+                    btn.textContent = 'Copied!';
+                    btn.classList.add('copied');
+                    
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.classList.remove('copied');
+                    }, 2000);
+                    
+                    this.showNotification('Hash copied to clipboard!', 'success', 2000);
+                } catch (err) {
+                    this.showNotification('Failed to copy hash.', 'error');
+                }
+            });
+        });
     }
 
     // Lazy Loading for Images
@@ -231,244 +564,38 @@ class Q4OSEnhancer {
         }
     }
 
-    // Search Functionality
-    setupSearchFunctionality() {
-        const searchContainer = document.createElement('div');
-        searchContainer.className = 'search-container position-relative';
-        searchContainer.innerHTML = `
-            <input type="text" class="form-control search-input" placeholder="Search Q4OS..." aria-label="Search">
-            <div class="search-results position-absolute w-100 bg-white border rounded mt-1" style="display: none; z-index: 1000;"></div>
-        `;
-
-        // Add search to navbar
-        const navbar = document.querySelector('.navbar-nav');
-        if (navbar) {
-            const searchItem = document.createElement('li');
-            searchItem.className = 'nav-item ms-auto';
-            searchItem.appendChild(searchContainer);
-            navbar.appendChild(searchItem);
-        }
-
-        const searchInput = searchContainer.querySelector('.search-input');
-        const searchResults = searchContainer.querySelector('.search-results');
-
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.trim();
-            if (query.length > 2) {
-                this.performSearch(query, searchResults);
-            } else {
-                searchResults.style.display = 'none';
-            }
-        });
-
-        // Close search results when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!searchContainer.contains(e.target)) {
-                searchResults.style.display = 'none';
-            }
-        });
-    }
-
-    performSearch(query, resultsContainer) {
-        // Simple client-side search
-        const searchableElements = document.querySelectorAll('h1, h2, h3, p, a');
-        const results = [];
-
-        searchableElements.forEach(element => {
-            if (element.textContent.toLowerCase().includes(query.toLowerCase())) {
-                results.push({
-                    text: element.textContent.substring(0, 100) + '...',
-                    element: element
+    // Animations
+    setupAnimations() {
+        if ('IntersectionObserver' in window) {
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                        animationObserver.unobserve(entry.target);
+                    }
                 });
-            }
-        });
+            }, {
+                threshold: 0.1
+            });
 
-        this.displaySearchResults(results.slice(0, 5), resultsContainer);
-    }
-
-    displaySearchResults(results, container) {
-        if (results.length === 0) {
-            container.innerHTML = '<div class="p-3 text-muted">No results found</div>';
-        } else {
-            container.innerHTML = results.map(result => `
-                <div class="search-result-item p-2 border-bottom cursor-pointer" data-element="${result.element.tagName}">
-                    ${result.text}
-                </div>
-            `).join('');
-
-            // Add click handlers
-            container.querySelectorAll('.search-result-item').forEach((item, index) => {
-                item.addEventListener('click', () => {
-                    results[index].element.scrollIntoView({ behavior: 'smooth' });
-                    container.style.display = 'none';
-                });
+            // Animate cards and sections
+            document.querySelectorAll('.card, .alert, .hero').forEach(el => {
+                animationObserver.observe(el);
             });
         }
-
-        container.style.display = 'block';
     }
 
-    // Theme Toggle
-    setupThemeToggle() {
-        const themeToggle = document.createElement('button');
-        themeToggle.className = 'btn btn-outline-secondary theme-toggle';
-        themeToggle.innerHTML = '🌙';
-        themeToggle.setAttribute('aria-label', 'Toggle dark mode');
-
-        // Add to navbar
-        const navbarText = document.querySelector('.navbar-text');
-        if (navbarText) {
-            navbarText.appendChild(themeToggle);
-        }
-
-        themeToggle.addEventListener('click', () => {
-            this.toggleTheme();
-        });
-
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('q4os-theme');
-        if (savedTheme === 'dark') {
-            this.enableDarkMode();
-        }
-    }
-
-    toggleTheme() {
-        const body = document.body;
-        const isDark = body.classList.contains('dark-mode');
-
-        if (isDark) {
-            this.enableLightMode();
-        } else {
-            this.enableDarkMode();
-        }
-    }
-
-    enableDarkMode() {
-        document.body.classList.add('dark-mode');
-        document.querySelector('.theme-toggle').innerHTML = '☀️';
-        localStorage.setItem('q4os-theme', 'dark');
-    }
-
-    enableLightMode() {
-        document.body.classList.remove('dark-mode');
-        document.querySelector('.theme-toggle').innerHTML = '🌙';
-        localStorage.setItem('q4os-theme', 'light');
-    }
-
-    // Download Tracker
-    setupDownloadTracker() {
-        const downloadLinks = document.querySelectorAll('a[href*="dnt"]');
-        downloadLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                // Track download analytics
-                this.trackEvent('download', {
-                    file: link.href,
-                    page: window.location.pathname
-                });
-            });
-        });
-    }
-
+    // Analytics Tracking
     trackEvent(eventName, data) {
-        // Simple analytics tracking (replace with your analytics service)
         console.log(`Event: ${eventName}`, data);
         
-        // Example: Send to analytics service
+        // Google Analytics 4 example
+        if (typeof gtag !== 'undefined') {
+            gtag('event', eventName, data);
+        }
+        
+        // Custom analytics service example
         // analytics.track(eventName, data);
-    }
-
-    // Newsletter Signup
-    setupNewsletterSignup() {
-        const newsletterHtml = `
-            <div class="newsletter-signup bg-primary text-white p-4 rounded mb-4">
-                <h4>Stay Updated</h4>
-                <p>Get the latest Q4OS news and updates delivered to your inbox.</p>
-                <form class="newsletter-form d-flex gap-2">
-                    <input type="email" class="form-control" placeholder="Enter your email" required>
-                    <button type="submit" class="btn btn-light">Subscribe</button>
-                </form>
-            </div>
-        `;
-
-        // Add newsletter signup to appropriate sections
-        const contactSection = document.querySelector('#contact');
-        if (contactSection) {
-            const container = contactSection.querySelector('.container');
-            if (container) {
-                container.insertAdjacentHTML('afterbegin', newsletterHtml);
-            }
-        }
-
-        // Handle newsletter form submission
-        const newsletterForm = document.querySelector('.newsletter-form');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const email = e.target.querySelector('input[type="email"]').value;
-                this.subscribeToNewsletter(email);
-            });
-        }
-    }
-
-    subscribeToNewsletter(email) {
-        // Simulate newsletter subscription
-        this.showNotification('Thank you for subscribing to our newsletter!', 'success');
-        
-        // In real implementation, send to your newsletter service
-        this.trackEvent('newsletter_signup', { email: email });
-        
-        // Clear the form
-        const form = document.querySelector('.newsletter-form');
-        if (form) {
-            form.reset();
-        }
-    }
-}
-
-// Enhanced Donation System
-class DonationEnhancer {
-    constructor() {
-        this.setupEnhancedDonation();
-    }
-
-    setupEnhancedDonation() {
-        const donationForms = document.querySelectorAll('form[action*="paypal"]');
-        donationForms.forEach(form => {
-            this.enhanceForm(form);
-        });
-    }
-
-    enhanceForm(form) {
-        // Add loading state to donation buttons
-        const submitBtn = form.querySelector('button[name="submit"]');
-        if (submitBtn) {
-            submitBtn.addEventListener('click', () => {
-                if (!submitBtn.disabled) {
-                    submitBtn.innerHTML = '<span class="loading"></span> Processing...';
-                    submitBtn.disabled = true;
-                    
-                    // Re-enable after a delay (in case of errors)
-                    setTimeout(() => {
-                        submitBtn.innerHTML = 'Donate';
-                        submitBtn.disabled = false;
-                    }, 5000);
-                }
-            });
-        }
-
-        // Add donation amount validation
-        const amountInputs = form.querySelectorAll('input[type="number"]');
-        amountInputs.forEach(input => {
-            input.addEventListener('input', (e) => {
-                const value = parseFloat(e.target.value);
-                if (value < 0) {
-                    e.target.value = 0;
-                } else if (value > 10000) {
-                    e.target.value = 10000;
-                    new Q4OSEnhancer().showNotification('Maximum donation amount is $10,000', 'info');
-                }
-            });
-        });
     }
 }
 
@@ -479,27 +606,30 @@ class PerformanceMonitor {
     }
 
     setupPerformanceTracking() {
-        // Track page load performance
         window.addEventListener('load', () => {
             setTimeout(() => {
-                const perfData = performance.getEntriesByType('navigation')[0];
-                this.trackPerformance(perfData);
+                this.trackPagePerformance();
             }, 0);
         });
     }
 
-    trackPerformance(perfData) {
-        const metrics = {
-            loadTime: perfData.loadEventEnd - perfData.loadEventStart,
-            domContentLoaded: perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart,
-            firstPaint: this.getFirstPaint(),
-            pageSize: this.getPageSize()
-        };
+    trackPagePerformance() {
+        if ('performance' in window) {
+            const perfData = performance.getEntriesByType('navigation')[0];
+            const metrics = {
+                loadTime: perfData.loadEventEnd - perfData.loadEventStart,
+                domContentLoaded: perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart,
+                firstPaint: this.getFirstPaint(),
+                pageSize: this.getPageSize()
+            };
 
-        console.log('Performance Metrics:', metrics);
-        
-        // Send to analytics if needed
-        // analytics.track('page_performance', metrics);
+            console.log('Performance Metrics:', metrics);
+            
+            // Send to analytics if needed
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_performance', metrics);
+            }
+        }
     }
 
     getFirstPaint() {
@@ -514,11 +644,65 @@ class PerformanceMonitor {
     }
 }
 
+// Accessibility Enhancements
+class AccessibilityEnhancer {
+    constructor() {
+        this.setupKeyboardNavigation();
+        this.setupFocusManagement();
+        this.setupScreenReaderSupport();
+    }
+
+    setupKeyboardNavigation() {
+        // Escape key to close modals and dropdowns
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Close search results
+                const searchResults = document.querySelector('.search-results');
+                if (searchResults) {
+                    searchResults.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    setupFocusManagement() {
+        // Ensure focus is visible
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-navigation');
+        });
+    }
+
+    setupScreenReaderSupport() {
+        // Add aria-labels to interactive elements without text
+        document.querySelectorAll('button:not([aria-label]):not([aria-labelledby])').forEach(btn => {
+            if (!btn.textContent.trim()) {
+                const icon = btn.querySelector('i');
+                if (icon) {
+                    const iconClass = icon.className;
+                    if (iconClass.includes('search')) {
+                        btn.setAttribute('aria-label', 'Search');
+                    } else if (iconClass.includes('close')) {
+                        btn.setAttribute('aria-label', 'Close');
+                    } else if (iconClass.includes('menu')) {
+                        btn.setAttribute('aria-label', 'Menu');
+                    }
+                }
+            }
+        });
+    }
+}
+
 // Initialize all enhancements when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     new Q4OSEnhancer();
-    new DonationEnhancer();
     new PerformanceMonitor();
+    new AccessibilityEnhancer();
 });
 
 // Service Worker Registration for PWA capabilities
@@ -533,3 +717,6 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
+// Export for use in other modules
+window.Q4OSEnhancer = Q4OSEnhancer;

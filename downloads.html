@@ -5,388 +5,644 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Q4OS | Downloads</title>
-    <!-- Bootstrap 5 -->
+    <title>Q4OS Downloads - Get Q4OS Operating System</title>
+    
+    <!-- Bootstrap 5.3.6 -->
     <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/css.css">
     <link rel="stylesheet" href="css/dark-mode.css">
+    
     <meta property="og:image" content="og.jpg" />
+    <meta name="description" content="Download Q4OS - Fast and powerful Linux operating system. Available for Intel/AMD, Raspberry Pi, and ARM devices.">
+    <meta name="keywords" content="Q4OS download, Linux download, operating system, Trinity desktop, Plasma desktop">
+    
     <script src="js/javascript.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="index.html">
-				<img src="img/q4os-logo-vertical.svg" alt="Q4OS" style="width: 150px;">
-			</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav me-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="index.html">Home</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link current" href="downloads.html">Downloads</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="documents.html">Documents</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="partner.html">Partner</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/forum/">Forum</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="blog.html">Blog</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/shop/">Shop</a>
-					</li>
-				</ul>
-				<div class="d-flex align-items-center gap-2">
-					<button type="button" class="btn btn-outline-secondary theme-toggle" aria-label="Toggle dark mode">
-						🌙
-					</button>
-					<button type="button" class="btn btn-primary text-white" data-bs-toggle="modal"
-						data-bs-target="#donationmodal">
-						Donate
-					</button>
-				</div>
-			</div>
-		</div>
-	</nav>
+    <!-- Enhanced Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/q4os-logo-vertical.svg" alt="Q4OS" style="width: 150px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house-fill me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link current" href="downloads.html">
+                            <i class="bi bi-download me-1"></i>Downloads
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="documents.html">
+                            <i class="bi bi-file-text me-1"></i>Documents
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="partner.html">
+                            <i class="bi bi-handshake me-1"></i>Partner
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/forum/">
+                            <i class="bi bi-chat-dots me-1"></i>Forum
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">
+                            <i class="bi bi-journal-text me-1"></i>Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/shop/">
+                            <i class="bi bi-shop me-1"></i>Shop
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-2">
+                    <button type="button" class="btn btn-outline-secondary theme-toggle" aria-label="Toggle dark mode">
+                        <i class="bi bi-moon-fill"></i>
+                    </button>
+                    <button type="button" class="btn btn-primary text-white" data-bs-toggle="modal"
+                        data-bs-target="#donationModal">
+                        <i class="bi bi-heart-fill me-1"></i>Donate
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-	<!-- Wrapper -->
-	<div id="wrapper">
-		<div class="container">
-			<div class="row mt-5 mb-3">
-				<div class="col-11">
-					<h1>Q4OS Downloads</h1>
-				</div>
-			</div>
-		</div>
+    <!-- Main Content -->
+    <div id="wrapper" style="padding-top: 100px;">
+        <!-- Hero Section -->
+        <section class="py-5 bg-primary text-white">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h1 class="display-4 fw-bold mb-3">Download Q4OS</h1>
+                        <p class="lead mb-4">Choose the perfect Q4OS edition for your needs. Fast, reliable, and secure operating system for all your devices.</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="badge bg-light text-dark fs-6">5 Years LTS Support</span>
+                            <span class="badge bg-light text-dark fs-6">Multiple Architectures</span>
+                            <span class="badge bg-light text-dark fs-6">Free & Open Source</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <i class="bi bi-download display-1"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-		<div id="downloads" class="container">
-			<div class="row">
-				<div class="col-12">
-					<h2>Installation media</h2>
-					<p> &nbsp;The Long Term Support release codenamed 'Centaurus' gives you five years of security
-						patches and updates, it will be supported until July 2024 at least.</p>
-					
-					<!-- Enhanced Download Cards -->
-					<div class="row g-4 mb-4">
-						<div class="col-md-6 col-lg-3">
-							<div class="card h-100 download-card">
-								<div class="card-body">
-									<h5 class="card-title">Plasma Desktop</h5>
-									<p class="card-text">64-bit Live Edition</p>
-									<p class="text-muted small">931 MB</p>
-									<a href="dnt10.html" class="btn btn-primary w-100">Download</a>
-									<a href="dqa007.html#inst" class="btn btn-outline-secondary btn-sm w-100 mt-2">Setup Guide</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-3">
-							<div class="card h-100 download-card">
-								<div class="card-body">
-									<h5 class="card-title">Trinity Desktop</h5>
-									<p class="card-text">64-bit Live Edition</p>
-									<p class="text-muted small">680 MB</p>
-									<a href="dnt11.html" class="btn btn-primary w-100">Download</a>
-									<a href="dqa007.html#inst" class="btn btn-outline-secondary btn-sm w-100 mt-2">Setup Guide</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-3">
-							<div class="card h-100 download-card">
-								<div class="card-body">
-									<h5 class="card-title">Trinity Install CD</h5>
-									<p class="card-text">64-bit Installation</p>
-									<p class="text-muted small">473 MB</p>
-									<a href="dnt12.html" class="btn btn-primary w-100">Download</a>
-									<a href="dqa007.html#inst" class="btn btn-outline-secondary btn-sm w-100 mt-2">Setup Guide</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-3">
-							<div class="card h-100 download-card">
-								<div class="card-body">
-									<h5 class="card-title">Trinity Install CD</h5>
-									<p class="card-text">32-bit Installation</p>
-									<p class="text-muted small">434 MB</p>
-									<a href="dnt13.html" class="btn btn-primary w-100">Download</a>
-									<a href="dqa007.html#inst" class="btn btn-outline-secondary btn-sm w-100 mt-2">Setup Guide</a>
-								</div>
-							</div>
-						</div>
-					</div>
+        <!-- Download Categories -->
+        <section class="py-5">
+            <div class="container">
+                <!-- Desktop Editions -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h2 class="fw-bold mb-4">
+                            <i class="bi bi-pc-display me-2"></i>Desktop Editions
+                        </h2>
+                        <p class="lead mb-4">The Long Term Support release codenamed 'Centaurus' gives you five years of security patches and updates, supported until July 2024 at least.</p>
+                    </div>
+                </div>
 
-					<div class="alert alert-info" role="alert">
-						<h6 class="alert-heading">System Requirements</h6>
-						<p class="mb-1"><strong>Plasma desktop:</strong> 1GHz CPU / 1GB RAM / 5GB disk</p>
-						<p class="mb-0"><strong>Trinity desktop:</strong> 300MHz CPU / 128MB RAM / 3GB disk</p>
-					</div>
+                <div class="row g-4 mb-5">
+                    <!-- Plasma Desktop -->
+                    <div class="col-lg-6">
+                        <div class="card h-100 shadow-sm border-0 download-card">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="card-title mb-0">
+                                    <i class="bi bi-laptop me-2"></i>Plasma Desktop
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5 class="text-primary">64-bit Live Edition</h5>
+                                        <p class="text-muted">Modern and feature-rich desktop environment</p>
+                                        <ul class="list-unstyled">
+                                            <li><i class="bi bi-check-circle text-success me-2"></i>Size: 931 MB</li>
+                                            <li><i class="bi bi-check-circle text-success me-2"></i>Live USB/DVD bootable</li>
+                                            <li><i class="bi bi-check-circle text-success me-2"></i>Full installation option</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="download-progress mb-3" style="display: none;">
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                                            </div>
+                                            <small class="text-muted">Downloading...</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <a href="dnt10.html" class="btn btn-primary btn-lg download-btn" data-file="q4os-plasma-x64.iso">
+                                        <i class="bi bi-download me-2"></i>Download
+                                    </a>
+                                    <a href="dqa007.html#inst" class="btn btn-outline-secondary">
+                                        <i class="bi bi-book me-2"></i>Installation Guide
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-					<h3 id="downloads_winsetup">Installer for Windows</h3>
-					<p>&nbsp;The easiest way to put Q4OS alongside Windows. Just run the setup guide from within Windows
-						and install Q4OS as easily as any other application. Windows 10/8/7 compatible.</p>
-					
-					<div class="card mb-4">
-						<div class="card-body">
-							<div class="row align-items-center">
-								<div class="col-md-8">
-									<h5 class="card-title mb-1">Q4OS WinSetup.exe</h5>
-									<p class="card-text text-muted">64-bit Windows Installer - 20 MB</p>
-								</div>
-								<div class="col-md-4 text-end">
-									<a href="dnt8.html" class="btn btn-primary">Download</a>
-									<div class="mt-2">
-										<a href="https://www.youtube.com/watch?v=FAQohrvvC2U" class="btn btn-outline-info btn-sm">Video Guide</a>
-										<a href="dqa014.html" class="btn btn-outline-secondary btn-sm">Setup Guide</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <!-- Trinity Desktop -->
+                    <div class="col-lg-6">
+                        <div class="card h-100 shadow-sm border-0 download-card">
+                            <div class="card-header bg-success text-white">
+                                <h4 class="card-title mb-0">
+                                    <i class="bi bi-laptop me-2"></i>Trinity Desktop
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5 class="text-success">64-bit Live Edition</h5>
+                                        <p class="text-muted">Lightweight and efficient desktop environment</p>
+                                        <ul class="list-unstyled">
+                                            <li><i class="bi bi-check-circle text-success me-2"></i>Size: 680 MB</li>
+                                            <li><i class="bi bi-check-circle text-success me-2"></i>Low system requirements</li>
+                                            <li><i class="bi bi-check-circle text-success me-2"></i>Classic desktop experience</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <div class="download-progress mb-3" style="display: none;">
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%"></div>
+                                            </div>
+                                            <small class="text-muted">Downloading...</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <a href="dnt11.html" class="btn btn-success btn-lg download-btn" data-file="q4os-trinity-x64.iso">
+                                        <i class="bi bi-download me-2"></i>Download
+                                    </a>
+                                    <a href="dqa007.html#inst" class="btn btn-outline-secondary">
+                                        <i class="bi bi-book me-2"></i>Installation Guide
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-					<h3 id="downloads_spechw">Specific hardware - Raspberry Pi, Pinebook</h3>
-					<p>&nbsp;Download images below to get a powerful desktop optimized for the <a
-							href="https://www.raspberrypi.org">Raspberry Pi</a>, or <a
-							href="https://www.pine64.org/">Pine64</a> hardware family.</p>
-					
-					<div class="row g-4 mb-4">
-						<div class="col-md-4">
-							<div class="card h-100">
-								<div class="card-body">
-									<h5 class="card-title">Raspberry Pi</h5>
-									<p class="card-text">Q4OS Scorpion - armhf</p>
-									<p class="text-muted small">440 MB</p>
-									<a href="dnt5.html" class="btn btn-primary w-100">Download</a>
-									<a href="dqa010.html" class="btn btn-outline-secondary btn-sm w-100 mt-2">Setup Guide</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card h-100">
-								<div class="card-body">
-									<h5 class="card-title">Pinebook 1080p</h5>
-									<p class="card-text">Q4OS Scorpion - arm64</p>
-									<p class="text-muted small">425 MB</p>
-									<a href="dnt6.html" class="btn btn-primary w-100">Download</a>
-									<a href="dqa013.html" class="btn btn-outline-secondary btn-sm w-100 mt-2">Setup Guide</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card h-100">
-								<div class="card-body">
-									<h5 class="card-title">Pinebook Legacy</h5>
-									<p class="card-text">Q4OS Scorpion - arm64</p>
-									<p class="text-muted small">425 MB</p>
-									<a href="dnt7.html" class="btn btn-primary w-100">Download</a>
-									<a href="dqa013.html" class="btn btn-outline-secondary btn-sm w-100 mt-2">Setup Guide</a>
-								</div>
-							</div>
-						</div>
-					</div>
+                <!-- Installation CDs -->
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-6">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-disc me-2"></i>Trinity Install CD (64-bit)
+                                </h5>
+                                <p class="text-muted">Minimal installation media - 473 MB</p>
+                                <div class="d-grid gap-2">
+                                    <a href="dnt12.html" class="btn btn-outline-primary download-btn" data-file="q4os-trinity-x64-install.iso">
+                                        <i class="bi bi-download me-2"></i>Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-disc me-2"></i>Trinity Install CD (32-bit)
+                                </h5>
+                                <p class="text-muted">Legacy hardware support - 434 MB</p>
+                                <div class="d-grid gap-2">
+                                    <a href="dnt13.html" class="btn btn-outline-primary download-btn" data-file="q4os-trinity-i386-install.iso">
+                                        <i class="bi bi-download me-2"></i>Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-					<h3>ARM port</h3>
-					<p>&nbsp;Q4OS for ARM devices runs on wide variety of hardware equipped with 32/64bit ARM
-						processors, including Chromebooks, tablets, single board computers, embedded devices and more.
-					</p>
-					<ul>
-						<li><a href="dqa012.html" title="A clean install of Q4OS Desktop on ARM device">Q4OS Scorpion -
-								ARM ... setup guide</a></li>
-					</ul>
+                <!-- System Requirements -->
+                <div class="alert alert-info" role="alert">
+                    <h5 class="alert-heading">
+                        <i class="bi bi-info-circle me-2"></i>System Requirements
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Plasma Desktop:</strong>
+                            <ul class="mb-0">
+                                <li>CPU: 1GHz processor</li>
+                                <li>RAM: 1GB minimum</li>
+                                <li>Storage: 5GB free space</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Trinity Desktop:</strong>
+                            <ul class="mb-0">
+                                <li>CPU: 300MHz processor</li>
+                                <li>RAM: 128MB minimum</li>
+                                <li>Storage: 3GB free space</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-					<h3>Other downloads</h3>
-					<p>&nbsp;If you are looking for older supported Q4OS releases, you can download from the <a
-							href="downloads3.html">Legacy releases page</a>.</p>
-					
-					<h3>Files details</h3>
-					<div class="table-responsive">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>MD5 Hash</th>
-									<th>Filename</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr><td><code>200ce33a04d89c88a0f62ab213b7b068</code></td><td>q4os-3.9-x64.r1.iso</td></tr>
-								<tr><td><code>627b2ea17810ecb99f82149d0f72620a</code></td><td>q4os-3.9-x64-tde.r1.iso</td></tr>
-								<tr><td><code>58aa8790e7339f567d3bf8584c581f65</code></td><td>q4os-3.9-x64-instcd.r1.iso</td></tr>
-								<tr><td><code>b384211bf85dac0363ecbaf568ccb573</code></td><td>q4os-3.9-i386-instcd.r1.iso</td></tr>
-								<tr><td><code>49b78d36acd6a057d615a4134405d078</code></td><td>q4os-2.7-rpi.r5.zip</td></tr>
-								<tr><td><code>edc51c80a19a0a12f2ee31e11629b6a3</code></td><td>q4os-2.7-pinebook1080p.r5.zip</td></tr>
-								<tr><td><code>5e5db6989a90e3fc0a87faafb4209ef5</code></td><td>q4os-2.7-pinebook.r5.zip</td></tr>
-								<tr><td><code>53f26dbb5af157f04f60c23c45a56e62</code></td><td>q4os-winsetup.exe</td></tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
+                <!-- Windows Installer -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h2 class="fw-bold mb-4">
+                            <i class="bi bi-windows me-2"></i>Windows Installer
+                        </h2>
+                    </div>
+                </div>
 
-		<div class="section contact bg-light">
-			<div id="contact" class="container">
-				<div class="row">
-					<div class="col-12">
-						<h2 class="text-center mt-5 mb-5">Contact Us</h2>
-					</div>
-				</div>
-				<form class="row g-3 pb-5" action="https://formspree.io/support@q4os.org" method="POST">
-					<div class="col-md-6 offset-md-3">
-						<input type="text" name="name" placeholder="Name*" class="form-control" required>
-					</div>
-					<div class="col-md-3">
-						<input type="text" name="phone" placeholder="Phone" class="form-control">
-					</div>
-					<div class="col-md-6 offset-md-3">
-						<input type="email" name="_replyto" placeholder="E-Mail*" class="form-control" required>
-					</div>
-					<div class="col-md-6 offset-md-3">
-						<textarea name="message" placeholder="Message*" class="form-control" rows="4" required></textarea>
-					</div>
-					<div class="col-md-6 offset-md-3">
-						<input type="submit" class="btn btn-primary w-100" value="Send">
-					</div>
-				</form>
-			</div>
-		</div>
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-8">
+                                        <h4 class="card-title">
+                                            <i class="bi bi-windows me-2"></i>Q4OS WinSetup.exe
+                                        </h4>
+                                        <p class="card-text">The easiest way to install Q4OS alongside Windows. Just run the setup from within Windows and install Q4OS as easily as any other application.</p>
+                                        <ul class="list-unstyled">
+                                            <li><i class="bi bi-check-circle text-success me-2"></i>Size: 20 MB</li>
+                                            <li><i class="bi bi-check-circle text-success me-2"></i>Windows 10/8/7 compatible</li>
+                                            <li><i class="bi bi-check-circle text-success me-2"></i>Dual-boot setup</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="d-grid gap-2">
+                                            <a href="dnt8.html" class="btn btn-primary btn-lg download-btn" data-file="q4os-winsetup.exe">
+                                                <i class="bi bi-download me-2"></i>Download
+                                            </a>
+                                            <div class="btn-group" role="group">
+                                                <a href="https://www.youtube.com/watch?v=FAQohrvvC2U" target="_blank" class="btn btn-outline-info">
+                                                    <i class="bi bi-play-circle me-1"></i>Video Guide
+                                                </a>
+                                                <a href="dqa014.html" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-book me-1"></i>Setup Guide
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-		<footer class="section contact">
-			<div class="container">
-				<div class="row py-5">
-					<div class="col-12 col-md-3">
-						<a href="https://twitter.com/q4osteam" target="_blank">
-							<img src="img/twitter-logo.png" alt="Twitter" width="30">
-						</a>
-						<a href="https://github.com/q4os" target="_blank">
-							<img src="img/github-logo.svg" alt="GitHub" width="30">
-						</a>
-					</div>
-					<div class="col-12 col-md-9 text-end">
-						<p class="copyright text-black">&copy;
-							Q4OS. All Rights Reserved.<br><a href="https://trenta.media/?src=q4os"
-								style="font-size: 10px; color: #3F51B5; text-decoration: none;" target="_blank">a <img
-									src="https://trenta.media/ext-rsc/trentamedia.svg"
-									style="height: 20px; vertical-align: text-center" alt="Trenta.Media"> site</a></p>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</div>
+                <!-- ARM Devices -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h2 class="fw-bold mb-4">
+                            <i class="bi bi-cpu me-2"></i>ARM Devices
+                        </h2>
+                        <p class="lead mb-4">Download images optimized for ARM-based devices including Raspberry Pi and Pine64 hardware family.</p>
+                    </div>
+                </div>
 
-	<!-- Enhanced Donation Modal -->
-	<div class="modal fade" id="donationmodal" tabindex="-1" aria-labelledby="donationModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="donationModalLabel">Donate to Q4OS</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<p>If you like Q4OS, please donate us.</p>
-					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-						<input type="hidden" name="business" value="info@q4os.org" />
-						<input type="hidden" name="cmd" value="_donations" />
-						<input type="hidden" name="item_name" value="Q4OS Development Support" />
-						<input type="hidden" name="currency_code" value="USD" />
-						<input type="hidden" name="no_shipping" value="1">
-						<input type="hidden" name="return" value="https://www.q4os.org/redirect1.html" />
-						<input type="hidden" name="cancel_return" value="https://www.q4os.org/dnt1.html" />
-						<input type="hidden" name="cbt" value="Continue to Download Q4OS >" />
-						<input type="hidden" name="cn"
-							   value="Thank you for the contribution, you can let us a message how to utilize your donation:" />
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-4">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="card-header bg-warning text-dark">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi bi-cpu me-2"></i>Raspberry Pi
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Q4OS Scorpion - armhf</p>
+                                <p class="text-muted small">Size: 440 MB</p>
+                                <div class="d-grid gap-2">
+                                    <a href="dnt5.html" class="btn btn-warning download-btn" data-file="q4os-rpi.zip">
+                                        <i class="bi bi-download me-2"></i>Download
+                                    </a>
+                                    <a href="dqa010.html" class="btn btn-outline-secondary btn-sm">
+                                        <i class="bi bi-book me-1"></i>Setup Guide
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi bi-laptop me-2"></i>Pinebook 1080p
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Q4OS Scorpion - arm64</p>
+                                <p class="text-muted small">Size: 425 MB</p>
+                                <div class="d-grid gap-2">
+                                    <a href="dnt6.html" class="btn btn-info download-btn" data-file="q4os-pinebook1080p.zip">
+                                        <i class="bi bi-download me-2"></i>Download
+                                    </a>
+                                    <a href="dqa013.html" class="btn btn-outline-secondary btn-sm">
+                                        <i class="bi bi-book me-1"></i>Setup Guide
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="card-title mb-0">
+                                    <i class="bi bi-laptop me-2"></i>Pinebook Legacy
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Q4OS Scorpion - arm64</p>
+                                <p class="text-muted small">Size: 425 MB</p>
+                                <div class="d-grid gap-2">
+                                    <a href="dnt7.html" class="btn btn-secondary download-btn" data-file="q4os-pinebook.zip">
+                                        <i class="bi bi-download me-2"></i>Download
+                                    </a>
+                                    <a href="dqa013.html" class="btn btn-outline-secondary btn-sm">
+                                        <i class="bi bi-book me-1"></i>Setup Guide
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-						<input type="hidden" name="amount" id="modalAmount" />
+                <!-- Additional Information -->
+                <div class="row mb-5">
+                    <div class="col-lg-6">
+                        <div class="card border-0 bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-info-circle me-2"></i>ARM Port Information
+                                </h5>
+                                <p class="card-text">Q4OS for ARM devices runs on wide variety of hardware equipped with 32/64bit ARM processors, including Chromebooks, tablets, single board computers, embedded devices and more.</p>
+                                <a href="dqa012.html" class="btn btn-outline-primary">
+                                    <i class="bi bi-book me-2"></i>ARM Setup Guide
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-0 bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-archive me-2"></i>Legacy Releases
+                                </h5>
+                                <p class="card-text">Looking for older supported Q4OS releases? You can download previous versions from our legacy releases archive.</p>
+                                <a href="downloads3.html" class="btn btn-outline-primary">
+                                    <i class="bi bi-archive me-2"></i>Legacy Downloads
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-						<div class="paySystem">
-							<div class="opt" id="modalOpt1" onclick="selectModal(this); modalPrice=1">
-								1 $
-							</div>
-							<div class="opt" id="modalOpt2" onclick="selectModal(this); modalPrice=12">12 $</div>
-							<div class="opt" id="modalOpt3" onclick="selectModal(this); modalPrice=50">50 $</div>
-							<div class="opt other" id="modalOpt4">
-								<label>Other: </label><input type="number"
-															 id="modalOwnPrice"
-															 onkeyup="updateModalOwnPrice(this); modalPrice = parseInt(this.value)" />
-							</div>
-							<div class="splitLine"></div>
-							<button name="submit" disabled class="disabled" id="modalSendPriceButt" onclick="document.getElementById('modalAmount').value = modalPrice">
-								Donate
-							</button>
-						</div>
-					</form>
+                <!-- File Verification -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h3 class="fw-bold mb-4">
+                            <i class="bi bi-shield-check me-2"></i>File Verification
+                        </h3>
+                        <p class="mb-4">Verify the integrity of your downloads using the MD5 checksums below:</p>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Filename</th>
+                                        <th>MD5 Hash</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>q4os-3.9-x64.r1.iso</code></td>
+                                        <td><small class="font-monospace">200ce33a04d89c88a0f62ab213b7b068</small></td>
+                                        <td><button class="btn btn-sm btn-outline-secondary copy-hash" data-hash="200ce33a04d89c88a0f62ab213b7b068">Copy</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>q4os-3.9-x64-tde.r1.iso</code></td>
+                                        <td><small class="font-monospace">627b2ea17810ecb99f82149d0f72620a</small></td>
+                                        <td><button class="btn btn-sm btn-outline-secondary copy-hash" data-hash="627b2ea17810ecb99f82149d0f72620a">Copy</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>q4os-3.9-x64-instcd.r1.iso</code></td>
+                                        <td><small class="font-monospace">58aa8790e7339f567d3bf8584c581f65</small></td>
+                                        <td><button class="btn btn-sm btn-outline-secondary copy-hash" data-hash="58aa8790e7339f567d3bf8584c581f65">Copy</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>q4os-3.9-i386-instcd.r1.iso</code></td>
+                                        <td><small class="font-monospace">b384211bf85dac0363ecbaf568ccb573</small></td>
+                                        <td><button class="btn btn-sm btn-outline-secondary copy-hash" data-hash="b384211bf85dac0363ecbaf568ccb573">Copy</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>q4os-winsetup.exe</code></td>
+                                        <td><small class="font-monospace">53f26dbb5af157f04f60c23c45a56e62</small></td>
+                                        <td><button class="btn btn-sm btn-outline-secondary copy-hash" data-hash="53f26dbb5af157f04f60c23c45a56e62">Copy</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-					<script>
-						var modalPrice = 10;
-						var modalOwnPrice = false;
-						function selectModal(object) {
-							document.getElementById("modalOpt1").classList.remove("selected");
-							document.getElementById("modalOpt2").classList.remove("selected");
-							document.getElementById("modalOpt3").classList.remove("selected");
-							document.getElementById("modalOpt4").classList.remove("selected");
-							document.getElementById("modalSendPriceButt").classList.remove("disabled");
-							document.getElementById("modalSendPriceButt").disabled = false;
+        <!-- Support Section -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h2 class="fw-bold mb-4">Need Help?</h2>
+                        <p class="lead mb-4">Get support and join our community</p>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <a href="documents.html" class="btn btn-outline-primary w-100">
+                                    <i class="bi bi-book me-2"></i>Documentation
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="/forum/" class="btn btn-outline-primary w-100">
+                                    <i class="bi bi-chat-dots me-2"></i>Community Forum
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="#contact" class="btn btn-outline-primary w-100">
+                                    <i class="bi bi-envelope me-2"></i>Contact Support
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-							document.getElementById("modalSendPriceButt").innerText = "Donate";
-							modalOwnPrice = false;
-							if (object != document.getElementById("modalOpt4"))
-								document.getElementById("modalOwnPrice").value = "";
-							object.classList.add("selected");
-						}
+        <!-- Contact Section -->
+        <section id="contact" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="display-5 fw-bold">Contact Us</h2>
+                        <p class="lead">Get in touch with our team</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <form class="row g-3" action="https://formspree.io/support@q4os.org" method="POST">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Name *</label>
+                                <input type="text" name="name" class="form-control" id="name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="tel" name="phone" class="form-control" id="phone">
+                            </div>
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" name="_replyto" class="form-control" id="email" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea name="message" class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="bi bi-send me-2"></i>Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-						function updateModalOwnPrice(object) {
-							document.getElementById("modalOpt1").classList.remove("selected");
-							document.getElementById("modalOpt2").classList.remove("selected");
-							document.getElementById("modalOpt3").classList.remove("selected");
-							document.getElementById("modalOpt4").classList.add("selected");
-							modalOwnPrice = true;
+        <!-- Footer -->
+        <footer class="py-5 bg-dark text-white">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h5 class="fw-bold mb-3">Q4OS</h5>
+                        <p>Fast and powerful operating system based on the latest technologies while offering highly productive desktop environment.</p>
+                        <div class="social-links">
+                            <a href="https://twitter.com/q4osteam" target="_blank" class="text-white me-3">
+                                <i class="bi bi-twitter fs-4"></i>
+                            </a>
+                            <a href="https://github.com/q4os" target="_blank" class="text-white me-3">
+                                <i class="bi bi-github fs-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="fw-bold mb-3">Quick Links</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="downloads.html" class="text-white-50 text-decoration-none">Downloads</a></li>
+                            <li><a href="documents.html" class="text-white-50 text-decoration-none">Documentation</a></li>
+                            <li><a href="partner.html" class="text-white-50 text-decoration-none">Partnership</a></li>
+                            <li><a href="/forum/" class="text-white-50 text-decoration-none">Forum</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h6 class="fw-bold mb-3">Support</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="mailto:support@q4os.org" class="text-white-50 text-decoration-none">Technical Support</a></li>
+                            <li><a href="mailto:partner@q4os.org" class="text-white-50 text-decoration-none">Business Inquiries</a></li>
+                            <li><a href="mailto:develop@q4os.org" class="text-white-50 text-decoration-none">Development</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="mb-0">&copy; 2024 Q4OS. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <small>
+                            <a href="https://trenta.media/?src=q4os" class="text-white-50 text-decoration-none" target="_blank">
+                                a <img src="https://trenta.media/ext-rsc/trentamedia.svg" style="height: 16px; vertical-align: text-center" alt="Trenta.Media"> site
+                            </a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 
-							if (object.value == "0") {
-								document.getElementById("modalSendPriceButt").innerText = "Get free";
-							} else {
-								document.getElementById("modalSendPriceButt").innerText = "Donate";
-							}
+    <!-- Enhanced Donation Modal -->
+    <div class="modal fade" id="donationModal" tabindex="-1" aria-labelledby="donationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="donationModalLabel">
+                        <i class="bi bi-heart-fill me-2"></i>Support Q4OS Development
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-center mb-4">Your donation helps us continue developing Q4OS and providing free, high-quality software to users worldwide.</p>
+                    
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="modalDonationForm">
+                        <input type="hidden" name="business" value="info@q4os.org" />
+                        <input type="hidden" name="cmd" value="_donations" />
+                        <input type="hidden" name="item_name" value="Q4OS Development Support" />
+                        <input type="hidden" name="currency_code" value="USD" />
+                        <input type="hidden" name="no_shipping" value="1">
+                        <input type="hidden" name="return" value="https://www.q4os.org/redirect1.html" />
+                        <input type="hidden" name="cancel_return" value="https://www.q4os.org/dnt1.html" />
+                        <input type="hidden" name="amount" id="modalAmount" />
 
-							if (object.value == "") {
-								document.getElementById("modalSendPriceButt").classList.add("disabled");
-								document.getElementById("modalSendPriceButt").disabled = true;
-							} else {
-								document.getElementById("modalSendPriceButt").classList.remove("disabled");
-								document.getElementById("modalSendPriceButt").disabled = false;
-							}
-						}
-					</script>
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <button type="button" class="btn btn-outline-primary w-100 modal-donation-btn" data-amount="5">$5</button>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="btn btn-outline-primary w-100 modal-donation-btn" data-amount="12">$12</button>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="btn btn-outline-primary w-100 modal-donation-btn" data-amount="25">$25</button>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="btn btn-outline-primary w-100 modal-donation-btn" data-amount="50">$50</button>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="modalCustomAmount" class="form-label">Custom Amount ($)</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" id="modalCustomAmount" min="1" max="10000" placeholder="Enter amount">
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg" id="modalDonateBtn" disabled>
+                                <i class="bi bi-heart-fill me-2"></i>Donate Now
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-					<a style="color:rgba(48,63,159, 1); font-size: 12px;" href="downloads.html"><b>Take me to Downloads</b></a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Bootstrap 5 JavaScript -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
-		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
-		crossorigin="anonymous"></script>
-	<script src="js/enhanced-features.js"></script>
+    <!-- Bootstrap 5.3.6 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+        crossorigin="anonymous"></script>
+    <script src="js/enhanced-features.js"></script>
 </body>
 
 </html>

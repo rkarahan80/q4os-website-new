@@ -1,16 +1,21 @@
 {
-  "name": "project",
-  "version": "1.0.0",
-  "description": "New website for Q4OS",
-  "main": "sw.js",
+  "name": "q4os-website",
+  "version": "2.0.0",
+  "description": "Enhanced Q4OS website with Bootstrap 5.3.6",
+  "main": "index.html",
   "scripts": {
-    "dev": "live-server",
+    "dev": "live-server --port=3000 --open=/",
+    "build": "npm run optimize",
+    "optimize": "echo 'Optimizing assets...'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["q4os", "linux", "operating-system", "desktop"],
+  "author": "Q4OS Team",
+  "license": "MIT",
   "devDependencies": {
     "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.6"
   }
 }
