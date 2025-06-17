@@ -1,0 +1,120 @@
+/* Dark Mode Styles for Q4OS Website */
+.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --card-bg: #2d2d2d;
+    --border-color: #404040;
+    --navbar-bg: rgba(45, 45, 45, 0.95);
+}
+
+.dark-mode body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.dark-mode .navbar-light {
+    background-color: var(--navbar-bg) !important;
+}
+
+.dark-mode .navbar-light .navbar-nav .nav-link {
+    color: var(--text-color);
+}
+
+.dark-mode .navbar-light .navbar-nav .nav-link:hover {
+    color: var(--color);
+    background: rgba(255,87,34,0.1);
+}
+
+.dark-mode .bg-light {
+    background: linear-gradient(135deg, var(--card-bg) 0%, #3a3a3a 100%) !important;
+}
+
+.dark-mode .donate {
+    background: var(--card-bg) !important;
+    border-color: var(--color);
+}
+
+.dark-mode .donate h3,
+.dark-mode .donate p {
+    color: var(--text-color);
+}
+
+.dark-mode .paySystem div.opt {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.dark-mode .paySystem div.opt:not(.selected):hover {
+    background: rgba(255,87,34,0.1);
+    border-color: var(--color);
+}
+
+.dark-mode .form-control {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.dark-mode .form-control:focus {
+    background-color: var(--card-bg);
+    border-color: var(--color);
+    color: var(--text-color);
+}
+
+.dark-mode .modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.dark-mode .modal-header {
+    border-bottom-color: var(--border-color);
+}
+
+.dark-mode .toast {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.dark-mode .search-results {
+    background-color: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color);
+}
+
+.dark-mode .search-result-item {
+    border-bottom-color: var(--border-color) !important;
+}
+
+.dark-mode .search-result-item:hover {
+    background-color: rgba(255,87,34,0.1);
+}
+
+.dark-mode .newsletter-signup {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #2c3e50 100%) !important;
+}
+
+.dark-mode h1, .dark-mode h2, .dark-mode h3 {
+    color: var(--text-color);
+}
+
+.dark-mode p, .dark-mode li {
+    color: var(--text-color);
+}
+
+.dark-mode a {
+    color: var(--color);
+}
+
+.dark-mode a:hover {
+    color: var(--color-dark);
+}
+
+.dark-mode footer {
+    background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+}
+
+/* Dark mode transitions */
+.dark-mode * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

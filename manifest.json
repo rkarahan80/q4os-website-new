@@ -1,0 +1,35 @@
+{
+    "name": "Q4OS - Desktop Operating System",
+    "short_name": "Q4OS",
+    "description": "Fast and powerful operating system based on the latest technologies while offering highly productive desktop environment.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#303f9f",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "img/q4os-logo-vertical.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "favicon.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        }
+    ],
+    "categories": ["productivity", "utilities"],
+    "lang": "en",
+    "dir": "ltr",
+    "scope": "/",
+    "screenshots": [
+        {
+            "src": "img/image5.jpg",
+            "sizes": "1280x720",
+            "type": "image/jpeg",
+            "label": "Q4OS Desktop Environment"
+        }
+    ]
+}
