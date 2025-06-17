@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Q4OS - Desktop Operating System</title>
-    <!-- Bootstrap -->
+    <!-- Bootstrap 5 -->
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/css.css">
     <link rel="stylesheet" href="css/dark-mode.css">
     <link rel="manifest" href="manifest.json">
@@ -29,47 +29,67 @@
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
-		<a class="navbar-brand" href="index.html"><img src="img/q4os-logo-vertical.svg" alt="Q4OS"
-				style="width: 150px;"></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-			aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarText">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link current" href="index.html">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="downloads.html">Downloads</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="documents.html">Documents</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="partner.html">Partner</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/forum/">Forum</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="blog.html">Blog</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/shop/">Shop</a>
-				</li>
-			</ul>
+		<div class="container-fluid">
+			<a class="navbar-brand" href="index.html">
+				<img src="img/q4os-logo-vertical.svg" alt="Q4OS" style="width: 150px;">
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav me-auto">
+					<li class="nav-item">
+						<a class="nav-link current" href="index.html">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="downloads.html">Downloads</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="documents.html">Documents</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="partner.html">Partner</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/forum/">Forum</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="blog.html">Blog</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/shop/">Shop</a>
+					</li>
+				</ul>
+				<div class="d-flex align-items-center gap-2">
+					<button type="button" class="btn btn-outline-secondary theme-toggle" aria-label="Toggle dark mode">
+						🌙
+					</button>
+					<button type="button" class="btn btn-primary text-white" data-bs-toggle="modal"
+						data-bs-target="#donationmodal">
+						Donate
+					</button>
+				</div>
+			</div>
 		</div>
 	</nav>
+
+	<!-- Progress Bar for Page Loading -->
+	<div class="progress-bar-container">
+		<div class="progress-bar-fill"></div>
+	</div>
+
 	<!-- Wrapper -->
 	<div id="wrapper">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="hero col-12">
-					<div class="logo col-6 col-sm-3 mx-auto d-none d-lg-block"><img src="img/q4os-logo-vertical.svg"
-							alt="Logo" class="img-fluid"></div>
-					<div class="logo col-6 col-sm-3 mx-auto d-lg-none"><img src="img/q4os-logo-fullcolor.svg" alt="Logo"
-							class="img-fluid"></div>
+					<div class="logo col-6 col-sm-3 mx-auto d-none d-lg-block">
+						<img src="img/q4os-logo-vertical.svg" alt="Logo" class="img-fluid">
+					</div>
+					<div class="logo col-6 col-sm-3 mx-auto d-lg-none">
+						<img src="img/q4os-logo-fullcolor.svg" alt="Logo" class="img-fluid">
+					</div>
 					<div class="text col-10 mx-auto">
 						<a href="#welcome">
 							<div class="btn btn-outline-primary mt-1">Learn More</div>
@@ -81,6 +101,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div id="welcome" class="container">
 			<div class="row">
 				<div class="col-12 mx-auto text-center">
@@ -90,17 +111,13 @@
 						and conservative integration of verified new features. System is distinguished by speed and very
 						low hardware requirements, runs great on brand new machines as well as legacy computers. It is
 						also very applicable for virtualization and cloud computing.
-
 					</p>
-
-
-
 				</div>
+
+				<!-- Enhanced Donation Section -->
                 <div class="col-10 col-md-4 mx-auto bg-light p-4 mb-5 rounded text-center donate" id="donate">
                     <h3>Download Q4OS</h3>
                     <p>If you like Q4OS, please donate us.</p>
-
-
 
                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
                         <input type="hidden" name="business" value="info@q4os.org" />
@@ -125,15 +142,13 @@
                             <div class="opt other" id="opt4">
                                 <label>Other: </label><input type="number"
                                                              id="ownPrice"
-                                                             onkeyup="updateOwnPrice(this); price = parseInt(this.value)" $ />
-
+                                                             onkeyup="updateOwnPrice(this); price = parseInt(this.value)" />
                             </div>
                             <div class="splitLine"></div>
                             <button name="submit" disabled class="disabled" id="sendPriceButt" onclick="document.getElementById('amount').value = price">
                                 Donate
                             </button>
                         </div>
-
                     </form>
 
                     <script>
@@ -186,13 +201,10 @@
                         }
                     </script>
 
-
-
-
-
                     <a style="color:rgba(48,63,159, 1); font-size: 12px;" href="downloads.html"><b>Take me to Downloads</b></a>
                 </div>
 			</div>
+
 			<div class="row">
 				<div class="col-10 col-md-5 mx-auto">
 					<img src="img/image5.jpg" alt="Screenshot showing desktop" class="img-fluid rounded">
@@ -204,8 +216,9 @@
 						modifications. For any form of commercial support <a href="#contact">contact us</a>.</p>
 				</div>
 			</div>
+
 			<div class="row mt-5 mb-5">
-				<div class="col-10 col-md-7 mx-auto order-12 order-md-1 text-md-right">
+				<div class="col-10 col-md-7 mx-auto order-12 order-md-1 text-md-end">
 					<h3 class="mt-4">Help Wanted</h3>
 					<p>We are currently seeking business partners to accelerate development, in order to build the
 						perfect operating system for professional use. If you would like to participate, fund or make an
@@ -217,6 +230,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="section bg-light">
 			<div id="systems" class="container">
 				<div class="row">
@@ -225,15 +239,15 @@
 
 						<div class="row mt-3 mb-3">
 							<div class="col-4">
-								<img src="img/processor-logo.svg" class="w-50" alt>
+								<img src="img/processor-logo.svg" class="w-50" alt="Processor">
 								<h4>i386/x64</h4>
 							</div>
 							<div class="col-4">
-								<img src="img/rasp-logo.svg" class="w-50" alt>
+								<img src="img/rasp-logo.svg" class="w-50" alt="Raspberry Pi">
 								<h4>Raspberry Pi</h4>
 							</div>
 							<div class="col-4">
-								<img src="img/pine-logo.svg" class="w-50" alt>
+								<img src="img/pine-logo.svg" class="w-50" alt="Pine64">
 								<h4>Pine64</h4>
 							</div>
 						</div>
@@ -247,13 +261,13 @@
 						</a>
 					</div>
 				</div>
-
 			</div>
 		</div>
+
 		<div class="section">
 			<div id="latest" class="container">
 				<div class="row">
-					<div class="col-10 col-md-4 mx-auto text-left the-latest">
+					<div class="col-10 col-md-4 mx-auto text-start the-latest">
 						<h2 class="mt-5">The Latest</h2>
 						<a href="blog.html#news190715">
 							<h4>Q4OS 3.8 Centaurus</h4>
@@ -264,7 +278,7 @@
 							<p>31 December, 2018</p>
 						</a>
 					</div>
-					<div class="col-10 col-md-4 offset-md-3 mx-auto text-left external-links pb-5">
+					<div class="col-10 col-md-4 offset-md-3 mx-auto text-start external-links pb-5">
 						<h2 class="mt-5">External Links</h2>
 						<a target="_blank" href="https://www.youtube.com/watch?v=pwl1jFE6JUc"
 							title="Q4OS 3 7 Centaurus review - A Youtube video">Review of Q4OS 3.7</a><br>
@@ -280,43 +294,51 @@
 						<a target="_blank"
 							href="https://news.softpedia.com/news/q4os-linux-devs-bring-the-trinity-desktop-experience-to-raspberry-pi-3-sbcs-503877.shtml"
 							title="Real desktop on the Raspberry Pi-3 ARM board, user's review">ARM desktop time ?</a>
-
 					</div>
-
 				</div>
 			</div>
 		</div>
+
 		<div class="section contact bg-light">
 			<div id="contact" class="container">
+				<!-- Newsletter Signup will be added here by JavaScript -->
 				<div class="row">
 					<div class="col-12">
 						<h2 class="text-center mt-5 mb-5">Contact Us</h2>
 					</div>
 				</div>
-				<form class="form-group row pb-5" action="https://formspree.io/support@q4os.org" method="POST">
-					<input type="text" name="name" placeholder="Name*"
-						class="form-control mb-1 col-10 offset-1 col-md-3 offset-md-3" required="">
-					<input type="text" name="phone" placeholder="Phone"
-						class="form-control mb-1 col-10 offset-1 offset-md-0 col-md-3">
-					<input type="email" name="_replyto" placeholder="E-Mail*"
-						class="form-control mb-1 col-10 offset-1 offset-md-3 col-md-6" required="">
-					<textarea name="message" placeholder="Message*"
-						class="form-control mb-1 col-10 offset-1 offset-md-3 col-md-6" required=""></textarea>
-					<input type="submit" class="btn btn-primary mb-1 col-10 offset-1 offset-md-3 col-md-6" value="Send">
+				<form class="row g-3 pb-5" action="https://formspree.io/support@q4os.org" method="POST">
+					<div class="col-md-6 offset-md-3">
+						<input type="text" name="name" placeholder="Name*" class="form-control" required>
+					</div>
+					<div class="col-md-3">
+						<input type="text" name="phone" placeholder="Phone" class="form-control">
+					</div>
+					<div class="col-md-6 offset-md-3">
+						<input type="email" name="_replyto" placeholder="E-Mail*" class="form-control" required>
+					</div>
+					<div class="col-md-6 offset-md-3">
+						<textarea name="message" placeholder="Message*" class="form-control" rows="4" required></textarea>
+					</div>
+					<div class="col-md-6 offset-md-3">
+						<input type="submit" class="btn btn-primary w-100" value="Send">
+					</div>
 				</form>
 			</div>
 		</div>
 
-		<footer class="section contact ">
+		<footer class="section contact">
 			<div class="container">
 				<div class="row py-5">
 					<div class="col-12 col-md-3">
-						<a href="https://twitter.com/q4osteam" target="_blank"><img src="img/twitter-logo.png"
-								alt="Twitter" width="30"></a>
-						<a href="https://github.com/q4os" target="_blank"><img src="img/github-logo.svg"
-								alt="GitHub" width="30"></a>
+						<a href="https://twitter.com/q4osteam" target="_blank">
+							<img src="img/twitter-logo.png" alt="Twitter" width="30">
+						</a>
+						<a href="https://github.com/q4os" target="_blank">
+							<img src="img/github-logo.svg" alt="GitHub" width="30">
+						</a>
 					</div>
-					<div class="col-12 col-md-9 text-right">
+					<div class="col-12 col-md-9 text-end">
 						<p class="copyright text-black">&copy;
 							Q4OS. All Rights Reserved.<br><a href="https://trenta.media/?src=q4os"
 								style="font-size: 10px; color: #3F51B5; text-decoration: none;" target="_blank">a <img
@@ -329,10 +351,98 @@
 		</footer>
 	</div>
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	<!-- Enhanced Donation Modal -->
+	<div class="modal fade" id="donationmodal" tabindex="-1" aria-labelledby="donationModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="donationModalLabel">Donate to Q4OS</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>If you like Q4OS, please donate us.</p>
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+						<input type="hidden" name="business" value="info@q4os.org" />
+						<input type="hidden" name="cmd" value="_donations" />
+						<input type="hidden" name="item_name" value="Q4OS Development Support" />
+						<input type="hidden" name="currency_code" value="USD" />
+						<input type="hidden" name="no_shipping" value="1">
+						<input type="hidden" name="return" value="https://www.q4os.org/redirect1.html" />
+						<input type="hidden" name="cancel_return" value="https://www.q4os.org/dnt1.html" />
+						<input type="hidden" name="cbt" value="Continue to Download Q4OS >" />
+						<input type="hidden" name="cn"
+							   value="Thank you for the contribution, you can let us a message how to utilize your donation:" />
+
+						<input type="hidden" name="amount" id="modalAmount" />
+
+						<div class="paySystem">
+							<div class="opt" id="modalOpt1" onclick="selectModal(this); modalPrice=1">
+								1 $
+							</div>
+							<div class="opt" id="modalOpt2" onclick="selectModal(this); modalPrice=12">12 $</div>
+							<div class="opt" id="modalOpt3" onclick="selectModal(this); modalPrice=50">50 $</div>
+							<div class="opt other" id="modalOpt4">
+								<label>Other: </label><input type="number"
+															 id="modalOwnPrice"
+															 onkeyup="updateModalOwnPrice(this); modalPrice = parseInt(this.value)" />
+							</div>
+							<div class="splitLine"></div>
+							<button name="submit" disabled class="disabled" id="modalSendPriceButt" onclick="document.getElementById('modalAmount').value = modalPrice">
+								Donate
+							</button>
+						</div>
+					</form>
+
+					<script>
+						var modalPrice = 10;
+						var modalOwnPrice = false;
+						function selectModal(object) {
+							document.getElementById("modalOpt1").classList.remove("selected");
+							document.getElementById("modalOpt2").classList.remove("selected");
+							document.getElementById("modalOpt3").classList.remove("selected");
+							document.getElementById("modalOpt4").classList.remove("selected");
+							document.getElementById("modalSendPriceButt").classList.remove("disabled");
+							document.getElementById("modalSendPriceButt").disabled = false;
+
+							document.getElementById("modalSendPriceButt").innerText = "Donate";
+							modalOwnPrice = false;
+							if (object != document.getElementById("modalOpt4"))
+								document.getElementById("modalOwnPrice").value = "";
+							object.classList.add("selected");
+						}
+
+						function updateModalOwnPrice(object) {
+							document.getElementById("modalOpt1").classList.remove("selected");
+							document.getElementById("modalOpt2").classList.remove("selected");
+							document.getElementById("modalOpt3").classList.remove("selected");
+							document.getElementById("modalOpt4").classList.add("selected");
+							modalOwnPrice = true;
+
+							if (object.value == "0") {
+								document.getElementById("modalSendPriceButt").innerText = "Get free";
+							} else {
+								document.getElementById("modalSendPriceButt").innerText = "Donate";
+							}
+
+							if (object.value == "") {
+								document.getElementById("modalSendPriceButt").classList.add("disabled");
+								document.getElementById("modalSendPriceButt").disabled = true;
+							} else {
+								document.getElementById("modalSendPriceButt").classList.remove("disabled");
+								document.getElementById("modalSendPriceButt").disabled = false;
+							}
+						}
+					</script>
+
+					<a style="color:rgba(48,63,159, 1); font-size: 12px;" href="downloads.html"><b>Take me to Downloads</b></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap 5 JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
 		crossorigin="anonymous"></script>
 	<script src="js/enhanced-features.js"></script>
 </body>
