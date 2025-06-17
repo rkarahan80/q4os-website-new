@@ -12,7 +12,6 @@ class Q4OSEnhancer {
         this.setupProgressBars();
         this.setupSearchFunctionality();
         this.setupThemeToggle();
-        this.setupDownloadTracker();
         this.setupNewsletterSignup();
         this.setupDonationSystem();
         this.setupNavbarScroll();
